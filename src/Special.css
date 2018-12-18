@@ -417,7 +417,7 @@ a.float:hover {
 @media screen and (max-width: 425px) {
   .container {
     position: relative;
-    top: 8%;
+    top: 5%;
   }
 }
 

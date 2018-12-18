@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import React from "react";
 import image from "../perfect.png";
 import logo from "../logo_pits.png";
@@ -49,15 +50,15 @@ const HomePage = () => (
         </ul>
         <ul className="navbar-nav ml-auto mt-3 mt-lg-0 ml-4">
           <li className="nav-item">
-            <a className="nav-link" href="/#">
+            <NavLink to="/login" className="nav-link">
               Sign in
-            </a>
+            </NavLink>
           </li>
-          <div className="ml-2"/>
+          <div className="ml-2" />
           <li className="nav-item">
-            <a className="btn bg-nice text-white" href="/#">
-              Creat Account <span class="sr-only">(current)</span>
-            </a>
+            <NavLink to="/signup" className="btn bg-nice text-white">
+              Creat Account
+            </NavLink>
           </li>
         </ul>
       </div>
@@ -151,7 +152,11 @@ const HomePage = () => (
             </p>
           </div>
           <div className="col-md-6">
-            <img src={image} className="img-fluid rounded shadow" alt="payment container"/>
+            <img
+              src={image}
+              className="img-fluid rounded shadow"
+              alt="payment container"
+            />
           </div>
         </div>
       </div>

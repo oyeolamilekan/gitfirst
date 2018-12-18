@@ -413,3 +413,14 @@ a.float:hover {
 .bg-darker {
   background: #00112C;
 }
+
+@media screen and (max-width: 425px) {
+  .container {
+    position: relative;
+    top: 8%;
+  }
+}
+
+.navbar-light .navbar-toggler {
+  border-color: #fff;
+}

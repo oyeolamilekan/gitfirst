@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import { Link } from "react-router-dom";
 import Loading from "react-spinners/BeatLoader";
 import axios from "axios";
 import strip from "../logo_pits.png";
@@ -193,6 +194,9 @@ class SignUp extends Component {
                     <div className="login-text">Create My Account</div>
                   )}
                 </button>
+              </div>
+              <div className="text-center mt-2">
+                Already have an account? <Link to="/login" className="text-dark">Login in</Link>
               </div>
               <div className="mt-4" />
             </form>

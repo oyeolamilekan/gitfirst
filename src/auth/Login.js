@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import { Link } from "react-router-dom";
 import Loading from "react-spinners/BeatLoader";
 import axios from "axios";
 import queryString from 'query-string';
@@ -134,6 +135,9 @@ class Login extends Component {
                     <div className="login-text">Login to your account</div>
                   )}
                 </button>
+              </div>
+              <div className="text-center mt-2">
+                New to Vinepay? <Link to="/signup" className="text-dark"> Sign Up </Link>
               </div>
               <div className="mt-4" />
             </form>

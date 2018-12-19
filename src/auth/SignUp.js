@@ -134,7 +134,7 @@ class SignUp extends Component {
                   placeholder="Username"
                   onChange={this.handleChange}
                   name="username"
-                  required="true"
+                  required={true}
                 />
               </div>
               <div className="mt-4" />
@@ -146,7 +146,7 @@ class SignUp extends Component {
                   aria-describedby="emailHelp"
                   placeholder="Enter email"
                   name="email"
-                  required="true"
+                  required
                   onChange={this.handleChange}
                 />
               </div>
@@ -158,7 +158,7 @@ class SignUp extends Component {
                   id="InputPassword1"
                   placeholder="Password"
                   name="password1"
-                  required="true"
+                  required
                   onChange={this.handleChange}
                 />
               </div>
@@ -170,7 +170,7 @@ class SignUp extends Component {
                   id="InputPassword2"
                   placeholder="Enter Password again"
                   name="password2"
-                  required="true"
+                  required
                   onChange={this.handleChange}
                 />
               </div>

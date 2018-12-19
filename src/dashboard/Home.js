@@ -24,7 +24,7 @@ const HomePage = () => (
         <ul className="navbar-nav mr-auto mt-3 mt-lg-0">
           <li className="nav-item active">
             <a className="nav-link" href="/#">
-              Our Solution <span class="sr-only">(current)</span>
+              Our Solution
             </a>
           </li>
           <li className="nav-item">

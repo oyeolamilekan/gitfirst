@@ -18,6 +18,7 @@ class Index extends Component {
     };
   }
   componentDidMount() {
+    console.log(Token())
     axios
       .get(`${url}/api/r_get_account_bal/`, {
         headers: {

@@ -39,7 +39,7 @@ class Pay extends Component {
   /// this.props.location.state;
   handleSubmit(event) {
     event.preventDefault();
-    const { customername, email, amount } = this.state;
+    const { customername, email, amount, shopName } = this.state;
     const { id } = this.props.match.params;
     this.props.history.push({
       pathname: "/pay",
@@ -47,7 +47,8 @@ class Pay extends Component {
         customername: customername,
         email: email,
         amount: amount,
-        id: id
+        id: id,
+        shopName: shopName
       }
     });
   }

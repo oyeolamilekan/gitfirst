@@ -47,7 +47,7 @@ class PayPt extends Component {
   };
 
   render() {
-    const { customername, amount } = this.props.location.state;
+    const { customername, amount, shopName } = this.props.location.state;
     const { successBtn } = this.state;
     return (
       <div className="col-md-6 offset-md-3 mt-4">
@@ -55,7 +55,7 @@ class PayPt extends Component {
           <p>
             {" "}
             Do you <b>{customername}</b> approve the payment of{" "}
-            <b>{formatPrice(`${amount}`)}</b> to this merchant <b>Konga</b>?
+            <b>{formatPrice(`${amount}`)}</b> to this merchant <b>{shopName}</b>?
           </p>
           {!successBtn ? (
             <PaystackButton

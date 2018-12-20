@@ -67,7 +67,7 @@ class PaymentPage extends Component {
 
   handelOnUploadFile = event => {
     this.setState({
-      file: event.target.files
+      file: event.target.files[0]
     });
   };
 
@@ -79,9 +79,8 @@ class PaymentPage extends Component {
     });
 
     const { shop_name, file } = this.state;
-
     let data = new FormData();
-    data.set("file", file[0]);
+    data.set("file", file);
     data.set("shop_name", shop_name);
     axios.post(`${url}/api/r_create/`, data, {
       headers: {
@@ -302,7 +301,6 @@ class PaymentPage extends Component {
                         id="file"
                         className="inputfile"
                         onChange={this.handelOnUploadFile}
-                        accept="image/x-png,image/gif,image/jpeg"
                         required
                       />
                       <label htmlFor="file">Choose a file</label>

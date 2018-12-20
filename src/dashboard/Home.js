@@ -49,17 +49,27 @@ const HomePage = () => (
           </li>
         </ul>
         <ul className="navbar-nav ml-auto mt-3 mt-lg-0 ml-4">
-          <li className="nav-item">
-            <NavLink to="/login" className="nav-link">
-              Sign in
-            </NavLink>
-          </li>
-          <div className="ml-2" />
-          <li className="nav-item">
-            <NavLink to="/signup" className="btn bg-nice text-white">
-              Creat Account
-            </NavLink>
-          </li>
+          {localStorage.getItem("username") ? (
+            <li className="nav-item">
+              <NavLink to="/dashboard" className="btn bg-nice text-white">
+                Dashboard
+              </NavLink>
+            </li>
+          ) : (
+            <div className="marker">
+              <li className="nav-item">
+                <NavLink to="/login" className="nav-link">
+                  Sign in
+                </NavLink>
+              </li>
+              <div className="ml-2" />
+              <li className="nav-item">
+                <NavLink to="/signup" className="btn bg-nice text-white">
+                  Creat Account
+                </NavLink>
+              </li>
+            </div>
+          )}
         </ul>
       </div>
     </nav>

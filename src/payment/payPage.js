@@ -15,12 +15,40 @@ class Pay extends Component {
       email: "",
       amount: "",
       loading: true,
-      shopName: "",
+      section_name: "",
+      section_logo:"",
       error: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDismiss = this.handleDismiss.bind(this);
+  }
+  
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    axios
+      .get(`${url}/api/r_validate_code/`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: id
+        }
+      })
+      .then(res => {
+        console.log(res.data);
+        const { status_open, section_name, section_logo } = res.data;
+        if (!status_open) {
+          this.setState({
+            error: true,
+            loading: false
+          });
+        } else {
+          this.setState({
+            loading: false,
+            section_name: section_name,
+            section_logo: section_logo
+          });
+        }
+      });
   }
 
   handleChange(event) {
@@ -52,32 +80,8 @@ class Pay extends Component {
       }
     });
   }
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    axios
-      .get(`${url}/api/r_validate_code/`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: id
-        }
-      })
-      .then(res => {
-        const { status, shop_name } = res.data;
-        if (status !== "ok") {
-          this.setState({
-            error: true,
-            loading: false
-          });
-        } else {
-          this.setState({
-            loading: false,
-            shopName: shop_name
-          });
-        }
-      });
-  }
   render() {
-    const { loading, shopName, error } = this.state;
+    const { error, loading, section_name, section_logo } = this.state;
     return (
       <div className="col-md-6 offset-md-3">
         <div className="container mt-4 bg-white p-4 shadow rounded">
@@ -93,8 +97,13 @@ class Pay extends Component {
           ) : !error ? (
             <div className="pay-container">
               <div className="img-container text-center">
-                <img src={strip} className="reg-img" alt="logo" />
-                <h2 className="font-weight-light">{shopName}</h2>
+                {!section_logo ? (
+                  <img src={strip} className="reg-img" alt="logo" />
+                ) : (
+                  <img src={section_logo} className="reg-img" alt="logo" />
+                )}
+
+                <h2 className="font-weight-light">{section_name}</h2>
               </div>
               <div className="mt-4" />
               <div className="in-pay-container">

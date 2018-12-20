@@ -302,6 +302,7 @@ class PaymentPage extends Component {
                         id="file"
                         className="inputfile"
                         onChange={this.handelOnUploadFile}
+                        accept="image/x-png,image/gif,image/jpeg"
                         required
                       />
                       <label htmlFor="file">Choose a file</label>

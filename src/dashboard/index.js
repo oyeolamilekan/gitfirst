@@ -76,7 +76,7 @@ class Index extends Component {
                       </div>
                       <div className="align-self-center mt-2">
                         <h6 className="f-14 text-muted"> Total Income</h6>
-                        <h6 className="font-weight-light">{formatPrice(info.total_income)}</h6>
+                        <h6 className="font-weight-light">{info.total_income ? formatPrice(info.total_income) : ''}</h6>
                       </div>
                     </div>
                   </div>

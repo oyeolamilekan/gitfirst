@@ -56,7 +56,7 @@ const HomePage = () => (
               </NavLink>
             </li>
           ) : (
-            <div className="marker">
+            <React.Fragment>
               <li className="nav-item">
                 <NavLink to="/login" className="nav-link">
                   Sign in
@@ -68,7 +68,7 @@ const HomePage = () => (
                   Creat Account
                 </NavLink>
               </li>
-            </div>
+            </React.Fragment>
           )}
         </ul>
       </div>

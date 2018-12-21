@@ -9,6 +9,12 @@ function formatPrice(cents) {
   });
 }
 
+function delimitNumbers(str) {
+  return (str.replace(/,/g, '') + "").replace(/\b(\d+)((\.\d+)*)\b/g, function(a, b, c) {
+    return (b.charAt(0) > 0 && !(c || ".").lastIndexOf(".") ? b.replace(/(\d)(?=(\d{3})+$)/g, "$1,") : b) + c;
+  });
+}
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
     localStorage.getItem('username')
@@ -22,4 +28,4 @@ const Token = () => {
   return token
 }
 
-export { PrivateRoute, formatPrice, Token };
+export { PrivateRoute, formatPrice, Token, delimitNumbers };

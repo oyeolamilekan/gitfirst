@@ -4,6 +4,7 @@ import React, { Component } from "react";
 
 import Loading from "react-spinners/BeatLoader";
 import axios from "axios";
+import { delimitNumbers } from "../helpers/utils";
 import strip from "../logo_pits.png";
 import url from "../url";
 
@@ -16,14 +17,14 @@ class Pay extends Component {
       amount: "",
       loading: true,
       section_name: "",
-      section_logo:"",
+      section_logo: "",
       error: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDismiss = this.handleDismiss.bind(this);
   }
-  
+
   componentDidMount() {
     const { id } = this.props.match.params;
     axios
@@ -50,7 +51,7 @@ class Pay extends Component {
         }
       });
   }
-
+  // input value={this.state.financialGoal} onChange={event => this.setState({financialGoal: event.target.value.replace(/\D/,'')})}/>
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -68,20 +69,21 @@ class Pay extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const { customername, email, amount, section_name } = this.state;
+    console.log(this.state)
     const { id } = this.props.match.params;
     this.props.history.push({
       pathname: "/pay",
       state: {
         customername: customername,
         email: email,
-        amount: amount,
+        amount: parseInt(amount.replace(/,/g, '')),
         id: id,
         shopName: section_name
       }
     });
   }
   render() {
-    const { error, loading, section_name, section_logo } = this.state;
+    const { error, loading, section_name, section_logo, amount } = this.state;
     return (
       <div className="col-md-6 offset-md-3">
         <div className="container mt-4 bg-white p-4 shadow rounded">
@@ -136,14 +138,19 @@ class Pay extends Component {
                   <div className="mt-4" />
                   <div className="form-group">
                     <input
-                      type="number"
+                      type="text"
                       className="form-control"
                       id="InputAmount"
                       aria-describedby="emailHelp"
                       placeholder="Enter Amount"
                       name="amount"
                       required={true}
-                      onChange={this.handleChange}
+                      value={amount}
+                      onChange={event =>
+                        this.setState({
+                          amount: delimitNumbers(event.target.value.toString())
+                        })
+                      }
                     />
                   </div>
                   <div className="btn-submit">

@@ -8,7 +8,7 @@ import url from "../url";
 
 class PayPt extends Component {
   state = {
-    key: "pk_test_f901a9c5023b1e56e21a6128baec1400757b71e0", //PAYSTACK PUBLIC KEY
+    key: "pk_test_key", //PAYSTACK PUBLIC KEY
     email: this.props.location.state.email, // customer email
     amount: parseInt(`${this.props.location.state.amount}00`), //equals NGN100,
     successBtn: false

@@ -35,7 +35,6 @@ class Pay extends Component {
         }
       })
       .then(res => {
-        console.log(res.data);
         const { status_open, section_name, section_logo } = res.data;
         if (!status_open) {
           this.setState({
@@ -69,7 +68,6 @@ class Pay extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const { customername, email, amount, section_name } = this.state;
-    console.log(this.state)
     const { id } = this.props.match.params;
     this.props.history.push({
       pathname: "/pay",
